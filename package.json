@@ -1,0 +1,27 @@
+{
+    "name": "Superhero-Dagober-Pack",
+    "version": "0.0.1",
+    "description": "Test Dagobert money",
+    "main": "server.js",
+    "dependencies": {
+        "mime-types": "~2.1.6",
+        "negotiator": "0.5.3",
+        "grunt": "0.4.5",
+        "express": "^4.13.4",
+        "grunt-cli": "",
+        "grunt-contrib-watch": "",
+        "grunt-contrib-uglify": "",
+        "grunt-contrib-clean": "1.0.0",
+        "grunt-contrib-jshint": "1.0.0",
+        "grunt-contrib-copy": "1.0.0",
+        "grunt-contrib-imagemin": "1.0.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "keywords": ["Dagobert"],
+    "author": "Pál Tamás",
+    "license": "MIT"
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!--    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    
+    <style>
+#map_container {
+	position: relative;
+	padding-top: 50%;
+   
+}
+#map {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+}
+        
+/*.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}*/
+.gmnoprint div {
+    display:none;
+    background:none !important;
+}        
+    </style>
+    
+  </head>
+  <body>
+   <div class="container">
+
+    <h1 class="addroundoutset">Hello, world!</h1>
+
+    <div class="alert alert-fixed-top">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>ALERT! </strong>Your text comes here
+    </div>
+
+    <div class="jumbotron">
+	<div class="container">
+		<h1>7. NAP Angular JS és kliensbeállítások</h1>
+		<p>AngularJS beállítása, alapok<br>
+		   Szerver - kliens kommunikáció
+		</p>
+		<p class="text-center">
+			<a class="btn btn-primary btn-lg">Jelentkezés</a>
+		</p>
+		
+        <p>Pontos helye: 1031 Budapest, Kazal utca 45.</p>
+        <div id="map_container">
+            <div id="map"></div>
+        </div>	
+	
+	</div>
+	
+</div>
+
+<script>
+$('#output').bind('mouseover',function() {
+    highlight();
+    console.log("m");
+});    
+$('#output').bind('mouseout',function() {
+    init();
+    console.log("o");
+});    
+
+function display(){    
+    var oOutput = document.getElementById("output");
+    
+    oOutput.addEventListener( 'mouseover',highlight,false );
+    oOutput.addEventListener( 'mouseout',init,false );
+}
+function highlight() {
+    var oOutput = document.getElementById("output");
+    oOutput.style.color="red";
+    oOutput.style.backgroundColor="yellow";
+}
+function init() {
+    var oOutput = document.getElementById("output");
+    oOutput.style.color="black";
+    oOutput.style.backgroundColor="white";
+}
+    
+</script>
+   
+    <a id="output" class="btn btn-large btn-block btn-success" onclick="alert('1111);"
+        href="javascript:void(0);" role="button">Belépés</a>
+        
+    <div style="padding:10px;"></div>
+    
+</div>
+   
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
+    </script>
+     
+    <script>
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(47.562325,19.046889),
+            mapOptions = {
+                zoom: 14,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions),
+        contentString = '1031 Budapest, Kazal utca 45',
+        infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 500
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+
+        google.maps.event.addDomListener(window, "resize", function() {
+            var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center);
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize); 
+        
+    </script>     
+  </body>
+</html>
