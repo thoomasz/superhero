@@ -8,4 +8,5 @@ jQuery.getJSON('users', function (users) {
 //
 function checkUser() {
     console.log('check user');
+
 }
