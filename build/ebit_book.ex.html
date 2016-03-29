@@ -90,6 +90,14 @@
 
             $("p").after("<div id='output'></div>");
 
+            $("#get").click(function () {
+                $.getJSON("../day.json", function (data) {
+                    $.each(data, function (i, val) {
+                        $('<li>' + val + '</li>').appendTo('#outputy');
+                    });
+                });
+            });
+
         });
     </script>
 </head>
@@ -99,14 +107,22 @@
     <p>Second paragraph</p>
 
     <div id="box1" class="gray border"></div>
+    <br />
 
     <form>
         Day:
         <input type="day" name="day" id="day" />
         <button type="button" id="button">Submit</button>
     </form>
-    <p>What is there on this day to say?
-        <div id="output"></div>
+    <p>What is there on this day to say?</p>
+    <div id="output"></div>
+
+    <button type="button" id="get">JSON</button>
+    <p class="lead">
+        Weekdays
+        <ul id="outputy"></ul>
+    </p>
+
 </body>
 
 </html>
